@@ -7,7 +7,7 @@ person.age = 27;
 
 var fruit = 'apple';
 if (fruit === 'pear') {
-    console.log('This is not an apple, it'\s a pear.');
+    console.log('This is not an apple, it\'s a pear.');
     console.log('Try another one?');
 } else if (fruit === 'apple'){
     console.log('This is an apple.');
