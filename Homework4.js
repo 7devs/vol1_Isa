@@ -15,3 +15,19 @@ function person(name, gender, age){
 }
 var Isa = new person ('Isa','F','16');
 document.write(Isa.age);
+//16
+arr.concat(arr1); arr1.concat(arr);
+//wiil combine w/o changing any of the arr. Pay attention to order
+arr.join(' '); arr.join(',');
+//'1 2 3 4 5 6 7' To generate string AND to put a space or comma in between
+arr.pop(); arr.shift();
+// To remove. To remove and populate the last or first one
+arr.push();
+//To add one at the end and return the total number in the arry
+arr.reverse();
+//To chagne order
+arr.slice(1,3); arr.slice(-3);
+// to pick out a few characters from an arry without really taking it out
+//[2,3] //in case negative, it means to count from the end [5,6,7]
+arr.sort();
+// in side (), you can put + or - numbers to decide the order
