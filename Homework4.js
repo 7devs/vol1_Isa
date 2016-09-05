@@ -36,4 +36,3 @@ arr.splice();
 //will remove from *** of *** objects and then add *** at that place
 arr.toString(',');
 //change all the objects in an arry to ONE string
-try
