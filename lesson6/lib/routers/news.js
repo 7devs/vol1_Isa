@@ -30,5 +30,4 @@ var router = require('express').Router(),
         res.status(404).send('ID not existing, fail to delete.');
       }
     })
-
 module.exports = router;
