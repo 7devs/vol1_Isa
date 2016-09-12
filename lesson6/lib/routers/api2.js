@@ -4,7 +4,7 @@ var router = require('express').Router(),
   router.route('/')
     .get(function(req, res, next){
         res.status(200).send('api2 is ready.');
-        res.status(200).send('I‘m supposed to draw all the news...')
+        res.status(200).send(news);
     });
 
   var id = req.params.id;
