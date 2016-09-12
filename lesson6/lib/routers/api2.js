@@ -7,10 +7,10 @@ var router = require('express').Router(),
         res.status(200).send(news);
     });
 
-  var id = req.params.id;
-
+  
   router.route('/news/:id')
     .get(function(req,res,next){
+      var id = req.params.id;
       if (newsModel[id]){
         res.status(200).send(newsModel[id]);
       } else {
@@ -20,6 +20,7 @@ var router = require('express').Router(),
 
   router.route('/news/:id')
     .delete(function(req,res,next){
+      var id = req.params.id;
       if (newsModel[id]){
         res.status(200).delete(newsModel[id])
       } else {
