@@ -20,7 +20,7 @@ router.route('/user/:key')
       if(userModel[key]){
         res.status(200).send(userModel[key]);
       } else {
-        res.status(404).send('data not existing.');
+        res.status(404).send('user not existing.');
       }
     });
 
