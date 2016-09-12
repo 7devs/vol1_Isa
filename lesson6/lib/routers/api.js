@@ -14,7 +14,7 @@ router.route('/')
     res.status(200).send('testing POST.')
   });
 
-router.route('/user/:key')
+router.route('/:key')
     .get(function(req,res,next){
       var key = req.params.key;
       if(userModel[key]){

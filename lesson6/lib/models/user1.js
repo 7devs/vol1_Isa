@@ -5,4 +5,4 @@ var user = {
   'lastName': 'Zhang'
 };
 
-module.exports.user1 = user;
+module.exports = user;
