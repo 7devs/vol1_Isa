@@ -1,4 +1,4 @@
-module.exports = [
+var userModel = [
     {
         firstName: 'Python',     // 名
         lastName: 'Do',          // 姓
@@ -56,3 +56,4 @@ module.exports = [
         company: 'YoKeNeng BeiJing'
     }
 ];
+ module.exports = userModel;
