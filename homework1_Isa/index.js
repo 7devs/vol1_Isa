@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({
 
 //第二部分 路由
 app.use('/user',require('./lib/routers/user.js'));
+app.use('/album',require('./lib/routers/album.js'));
 //app.use('/album',require('./lib/routers/album.js'));
 app.use('/*', function(req,res,next){
   res.status(404).send('没有！你赶紧检查一下网页输对了没有。要么就是你程序（又）写错了，哈哈');
