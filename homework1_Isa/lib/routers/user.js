@@ -2,6 +2,7 @@
 var router = require('express').Router(),
     userModel = require('../Models/user.js');
 
+//返回全部
 router.route('/')
   .get(function(req,res,next){
     res.status(200).send(userModel);
@@ -10,12 +11,16 @@ router.route('/')
 
 //返回用户年龄的平均值：
 router.route('/ageAvg').get(function(req,res,next){
+  var ageTotal = 0;//初始值要定义在for之外，不然每次开始都是零
+
   for (i=0; i< userModel.length; i=i+1){
-    var ageTotal = 0;
+
     ageTotal = ageTotal + userModel[i].age;
-    var ageAvg = ageTotal/(userModel.length);
-    res.status(200).send('平均年龄是' + ageAvg + '岁。');
-  }
+    console.log(ageTotal);
+  }//for语句结束
+
+  var ageAvg = ageTotal/(userModel.length);
+  res.status(200).send('平均年龄是' + ageAvg + '岁。');
 });
 
 //search公司名称
@@ -23,14 +28,15 @@ router.route('/search').get(function(req,res,next){
 var searchCompany = [];
 var key = req.query.company.toLowerCase();
 //console.log(key);
+//Search逻辑：用for语句一个一个检查是否有关键词，并将包含关键词的语句导入数组保存。
 for (i=0; i < userModel.length; i=i+1){
   var company1 = userModel[i].company.toLowerCase();
   var index = company1.indexOf(key);
   if (index !== -1) {
     searchCompany = searchCompany.concat(userModel[i]);
-  }
-  }
-
+  }//if语句结束
+} //for语句结束
+//最后输出search结果
   if (searchCompany.length === 0){
   res.status(404).send('没有相关记录');
   } else {
@@ -53,21 +59,25 @@ router.route('/:id').get(function(req,res,next){
 //修改年龄的语句：
 router.route('/:id').put(function(req, res, next) {
 var id = req.params.id-1;
+//用ageinput保存用户输入的年龄数值，再存成Number
 var ageinput = req.query.age;
 var ageNumber = parseInt(ageinput);
-//第一种提交if从句的方法，试验已成功
+
+//第一层if判断，是否有对应的ID
 if (userModel[id]) {
+  //第二层if判断，判断是否输入了数字
   if (ageNumber){
   userModel[id].age = ageNumber;
   res.status(200).send(userModel[id]);
   } else {
   res.status(403).send('需要修改age,并提交数字。');
-  }
+  }//第二层判断结束
 } else {
   res.status(404).send('PUT.没有这个ID');
-}});
+}//第一层判断结束
+});
 
-/*
+/* 第二种方法
 if (userModel[id] && ageNumber) {
   userModel[id].age = ageNumber;
   res.status(200).send(userModel[id]);
