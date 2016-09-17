@@ -19,6 +19,26 @@ var songList = [];
 res.status(200).send(songList);
 });
 
+
+//获取指定分类下的歌曲列表
+router.route('/search').get(function(req,res,next){
+  var type = req.query.type;
+  var thisType = [];
+  //console.log(type);
+  for (i=0; i<albumModel.length; i=i+1){
+    if(type===albumModel[i].type){
+      thisType = thisType.concat(albumModel[i]);
+    }//if语句结束
+  }//for语句结束
+
+  if (thisType.length===0){
+    res.status(404).send('木有这个类型');
+  } else {
+    res.status(200).send(thisType);
+  }
+});
+
+
 //返回制定索引的唱片数据
 router.route('/:id').get(function(req,res,next){
   var id = req.params.id-1;
@@ -76,11 +96,5 @@ router.route('/singer/:name').get(function(req,res,next){
   }
 
 });
-
-//获取指定分类下的歌曲列表
-router.route('/search').get(function(req,res,next){
-
-});
-
 
 module.exports = router;
