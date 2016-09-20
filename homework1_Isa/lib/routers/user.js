@@ -20,7 +20,7 @@ router.route('/ageAvg').get(function(req,res,next){
   }//for语句结束
 
   var ageAvg = ageTotal/(userModel.length);
-  res.status(200).send('平均年龄是' + ageAvg + '岁。');
+  res.status(200).send(ageAvg);
 });
 
 //search公司名称
@@ -100,7 +100,7 @@ router.route('/count/:sex').get(function(req,res,next){
       for (i = 0;i < userModel.length; i = i + 1){
           if (userModel[i].sex === sexx){
               count = count + 1 }}}
-  res.status(200).send(sexx + '一共有' + count + '人。');
+  res.status(200).send(count);
 });
 
 
