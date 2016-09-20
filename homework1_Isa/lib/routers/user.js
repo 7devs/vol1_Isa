@@ -60,7 +60,7 @@ router.route('/:id').get(function(req,res,next){
 router.route('/:id').put(function(req, res, next) {
 var id = req.params.id-1;
 //用ageinput保存用户输入的年龄数值，再存成Number
-var ageinput = req.query.age;
+var ageinput = req.body.age;
 var ageNumber = parseInt(ageinput);
 
 //第一层if判断，是否有对应的ID
